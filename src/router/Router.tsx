@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import { Login } from "../components/pages/Login";
 import { Page404 } from "../components/pages/Page404";
+import { HeaderLayout } from "../components/templates/HeaderLayout";
 import { homeRoutes } from './HomeRoutes';
 
 export const Router:FC = memo(() => {
@@ -19,7 +20,9 @@ export const Router:FC = memo(() => {
                             exact={route.exact} 
                             path={`${url}${route.path}`}
                         >
-                            {route.children}
+                            <HeaderLayout>
+                                {route.children}
+                            </HeaderLayout>
                         </Route>
                     ))}
                 </Switch>
@@ -28,6 +31,7 @@ export const Router:FC = memo(() => {
             <Route path="*">
                 <Page404 />
             </Route>
+        
         </Switch>
     )
 })
